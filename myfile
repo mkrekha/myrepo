@@ -1,0 +1,11 @@
+git add .
+git commit -m "Deploy Django app"
+git push origin main
+
+heroku create your-app-name
+heroku git:remote -a your-app-name
+git push heroku main
+
+heroku run python manage.py migrate
+heroku ps:scale web=1
+heroku open
